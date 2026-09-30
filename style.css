@@ -1,0 +1,172 @@
+/* ── RESET ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold:       #c9a84c;
+  --gold-light: #f0cc7a;
+  --bg:         #0a0a0a;
+  --text:       #f0ece4;
+}
+
+html { scroll-behavior: auto; } /* deixa o GSAP controlar o scroll */
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── SEÇÃO 1: HERO ── */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: -20%; /* extra para o parallax não mostrar borda */
+  background: radial-gradient(ellipse 80% 60% at 50% 60%, #3a2600 0%, var(--bg) 70%);
+  will-change: transform;
+}
+
+.hero-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+/* Opacidade 0 — GSAP anima na entrada */
+.hero-label {
+  font-size: .75rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  max-width: 14ch;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.hero h1 em { font-style: normal; color: var(--gold-light); }
+
+.hero-sub {
+  font-size: 1rem;
+  color: #555;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  font-size: .65rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #444;
+  opacity: 0;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollDown 1.6s ease-in-out infinite;
+}
+
+@keyframes scrollDown {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  51%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ── SEÇÃO 2: RETÂNGULOS ── */
+.transicao {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.retangulos {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  gap: 2px;
+}
+
+/* Estado inicial: 100% abaixo da tela */
+.retangulos div {
+  flex: 1;
+  transform: translateY(100%);
+  will-change: transform; /* layer na GPU = performance */
+}
+
+/* Degradê escuro → claro */
+.retangulos div:nth-child(1)  { background: #1a1000; }
+.retangulos div:nth-child(2)  { background: #221500; }
+.retangulos div:nth-child(3)  { background: #2c1c00; }
+.retangulos div:nth-child(4)  { background: #362200; }
+.retangulos div:nth-child(5)  { background: #402900; }
+.retangulos div:nth-child(6)  { background: #4a3000; }
+.retangulos div:nth-child(7)  { background: #543700; }
+.retangulos div:nth-child(8)  { background: #5e3e00; }
+.retangulos div:nth-child(9)  { background: #684500; }
+.retangulos div:nth-child(10) { background: #724c00; }
+.retangulos div:nth-child(11) { background: #7c5300; }
+.retangulos div:nth-child(12) { background: #a06a00; }
+
+.transicao-texto {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  opacity: 0; /* animado pelo ScrollTrigger */
+}
+
+.transicao-texto h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.transicao-texto em { font-style: normal; color: var(--gold-light); }
+
+/* ── SEÇÃO 3: PÓS-TRANSIÇÃO ── */
+.pos-transicao {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.5rem;
+  background: linear-gradient(to bottom, #4a3000, var(--bg));
+  padding: 2rem;
+}
+
+.pos-transicao h2 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; }
+.pos-transicao p  { color: #555; font-size: 1rem; }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GSAP ScrollTrigger Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- SEÇÃO 1: Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-label">Role para ver a mágica</p>
+      <h1>Criamos experiências <em>digitais</em> sob medida</h1>
+      <p class="hero-sub">Scroll para descobrir</p>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 2: Retângulos (trigger da animação) -->
+  <section class="transicao">
+    <div class="retangulos">
+      <div></div><div></div><div></div><div></div>
+      <div></div><div></div><div></div><div></div>
+      <div></div><div></div><div></div><div></div>
+    </div>
+    <div class="transicao-texto">
+      <h2>Animações que <em>impressionam</em><br/>seu cliente</h2>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 3: Conteúdo pós-transição -->
+  <section class="pos-transicao">
+    <h2>Pronto para se destacar?</h2>
+    <p>Agora você sabe como fazer esse efeito do zero.</p>
+  </section>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
